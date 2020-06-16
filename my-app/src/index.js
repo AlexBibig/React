@@ -1,30 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SearchBlock from './components/SearchBlock';
-
-const Header = () => {
-  const st = {
-    fontSize: '40px',
-    color: 'tomato',
-    textAlign: 'center',
-  };
-  return (
-    <h1 style={st} className='Header'>
-      Todo List
-    </h1>
-  );
-};
-
-const TodoList = () => {
-  const items = ['Learn HTML', 'Learn css', 'Learn react'];
-  return (
-    <ul>
-      <li>{items[0]}</li>
-      <li>Learn css</li>
-      <li>Learn react</li>
-    </ul>
-  );
-};
+import Header from './components/Header';
+import TodoList from './components/TodoList';
 
 const App = () => {
   const isLogged = true;
