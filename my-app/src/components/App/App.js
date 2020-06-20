@@ -1,7 +1,10 @@
 import React from 'react';
-import SearchBlock from './SearchBlock';
-import Header from './Header';
-import TodoList from './TodoList';
+import SearchBlock from '../SearchBlock';
+import Header from '../Header';
+import TodoList from '../TodoList';
+import Filter from '../Filter';
+
+import './App.css';
 
 const App = () => {
   const todoData = [
@@ -9,11 +12,14 @@ const App = () => {
     { text: 'Learn CSS', important: true, id: 2 },
     { text: 'Learn JS', important: false, id: 3 },
   ];
-  //корневой компонент, в который подключают все остальные компоненты
+
   return (
-    <div>
+    <div className='App'>
       <Header />
-      <SearchBlock />
+      <div className='line'>
+        <SearchBlock />
+        <Filter />
+      </div>
       <TodoList todos={todoData} />
     </div>
   );

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Header.css';
+
 const Header = () => {
   const st = {
     fontSize: '40px',
