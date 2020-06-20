@@ -1,22 +1,22 @@
 .TodoListItem {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .remove-btn {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
 .TodoListItem span {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .TodoListItem.done > span {
-  text-decoration: line-through;
+    text-decoration: line-through;
 }
 
 .TodoListItem.important > span {
-  font-weight: bold;
-  color: #007bff;
+    font-weight: bold;
+    color: #007bff;
 }

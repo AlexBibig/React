@@ -1,2 +1,3 @@
-import SearchBlock from './SearchBlock';
+import SearchBlock from "./SearchBlock";
+
 export default SearchBlock;
