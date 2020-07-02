@@ -1,10 +1,19 @@
 import React from 'react';
 
-import './Header.css'
+import './Header.css';
 
-const Header = ()=>{
+const Header = (props) => {
+  const { done, todo } = props;
 
-    return <h1>Todo List</h1>;
-  }
+  return (
+    <div className='Header'>
+      <h1>Todo List</h1>
+      <p>
+        <span>done: {done}</span>
+        <span>todo: {todo}</span>
+      </p>
+    </div>
+  );
+};
 
-  export default Header;
+export default Header;
