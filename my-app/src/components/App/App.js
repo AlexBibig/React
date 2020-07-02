@@ -4,33 +4,37 @@ import Header from '../Header';
 import TodoList from '../TodoList';
 import './App.css';
 import Filter from '../Filter';
-import ItemAddForm from '../ItemAddForm';
-import { render } from '@testing-library/react';
+import ItemAddForm from '../ItemAddForm/ItemAddForm';
+
 
 export default class App extends React.Component {
+
+  cId = 100;
+
   state = {
-    todoData: [
-      { text: 'Learn HTML', important: false, done: false, id: 1 },
-      { text: 'Learn CSS', important: true, done: false, id: 2 },
-      { text: 'Learn JS', important: false, done: false, id: 3 },
+    todoData : [
+      {text: 'Learn HTML', important: false, done: false, id:1}, 
+      {text: 'Learn CSS', important: true, done: false, id:2}, 
+      {text: 'Learn JS', important: false, done: false, id:3}  
     ],
-  };
+  }
 
   onDelete = (id) => {
     this.setState((prevState) => {
       const index = prevState.todoData.findIndex((el) => el.id === id);
-
-      const arr = [...prevState.todoData.slice(0, index), ...prevState.todoData.slice(index + 1)];
-
-      prevState.todoData.splice(index, 1);
+      
+      const arr = [
+        ...prevState.todoData.slice(0, index),
+        ...prevState.todoData.slice(index + 1)
+      ];
+      
       return {
-        todoData: arr,
-      };
-    });
-  };
+        todoData: arr
+      }
+    })
+  }
 
   onAdd = (label) => {
-    console.log(label);
     const obj = {
       text: label,
       important: false,
@@ -38,26 +42,48 @@ export default class App extends React.Component {
     };
 
     this.setState((prevState) => {
-      const newArr = [...prevState.todoData, obj];
-    });
-  };
+      const newArr = [ obj, ...prevState.todoData ];
+
+      return {
+        todoData: newArr
+      }
+    })
+
+  }
 
   onToggleDone = (id) => {
     console.log(id);
-  };
+    this.setState((prevState) => {
+      const index = prevState.todoData.findIndex((el) => el.id === id);
+
+      const newObj = {
+        ...prevState.todoData[index],
+        done: !prevState.todoData[index].done
+      };
+
+      const newArr = [
+        ...prevState.todoData.slice(0, index),
+        newObj,
+        ...prevState.todoData.slice(index + 1)
+      ];
+
+      return {
+        todoData: newArr
+      } 
+    })
+  }
 
   render() {
     return (
-      <div className='App'>
-        <Header done={2} todo={1} />
-        <div className='line'>
+      <div className="App">
+        <Header done={2} todo={1}/>
+        <div className="line">
           <SearchBlock />
-          <Filter />
+          <Filter/>
         </div>
-        <ItemAddForm onAdd={this.onAdd} />
+        <ItemAddForm onAdd={this.onAdd}/>
         <TodoList
           todos={this.state.todoData}
-          done={this.state.todoData[1].done}
           onDelete={this.onDelete}
           onToggleDone={this.onToggleDone}
         />
