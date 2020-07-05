@@ -17,6 +17,20 @@ export default class App extends React.Component {
       {text: 'Learn CSS', important: true, done: false, id:2}, 
       {text: 'Learn JS', important: false, done: false, id:3}  
     ],
+    filter: 'all' // all || active || done
+  }
+
+  filter = (arr, filter) => {
+    switch(filter) {
+      case 'all':
+        return arr;
+      case 'active':
+        return arr.filter(el => !el.done);
+      case 'done':
+        return arr.filter(el => el.done);
+      default:
+        return arr;
+    }
   }
 
   onDelete = (id) => {
@@ -51,41 +65,65 @@ export default class App extends React.Component {
 
   }
 
+  getNewArrAccordingProp = (prop, prevState, id) => {
+    const index = prevState.todoData.findIndex((el) => el.id === id);
+
+    const newObj = {
+      ...prevState.todoData[index],
+      [prop]: !prevState.todoData[index][prop]
+    };
+
+    const newArr = [
+      ...prevState.todoData.slice(0, index),
+      newObj,
+      ...prevState.todoData.slice(index + 1)
+    ];
+
+    return newArr;
+  }
+
   onToggleDone = (id) => {
-    console.log(id);
     this.setState((prevState) => {
-      const index = prevState.todoData.findIndex((el) => el.id === id);
-
-      const newObj = {
-        ...prevState.todoData[index],
-        done: !prevState.todoData[index].done
-      };
-
-      const newArr = [
-        ...prevState.todoData.slice(0, index),
-        newObj,
-        ...prevState.todoData.slice(index + 1)
-      ];
-
       return {
-        todoData: newArr
+        todoData: this.getNewArrAccordingProp('done', prevState, id)
       } 
     })
   }
 
+  onToggleImportant = (id) => {
+    this.setState((prevState) =>{
+      return {
+        todoData: this.getNewArrAccordingProp('important', prevState, id)
+      }
+    });
+  }
+
+  onFilterChange = (filter) => {
+    this.setState({
+      filter: filter
+    });
+  }
+
   render() {
+    const { todoData, filter } = this.state;
+
+    const doneSize = this.state.todoData.filter(el => el.done).length;
+    const todoSize = this.state.todoData.length - doneSize; 
+    const visibleTodos = this.filter(todoData, filter);
+    
     return (
       <div className="App">
-        <Header done={2} todo={1}/>
+        <Header done={doneSize} todo={todoSize}/>
         <div className="line">
           <SearchBlock />
-          <Filter/>
+          <Filter onFilterChange={this.onFilterChange} filter={filter} />
         </div>
         <ItemAddForm onAdd={this.onAdd}/>
         <TodoList
-          todos={this.state.todoData}
+          todos={visibleTodos}
           onDelete={this.onDelete}
           onToggleDone={this.onToggleDone}
+          onToggleImportant={this.onToggleImportant}
         />
       </div>
     );

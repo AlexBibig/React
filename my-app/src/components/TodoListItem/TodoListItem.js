@@ -2,34 +2,19 @@ import React from 'react';
 
 import './TodoListItem.css'
 
-export default class TodoListItem extends React.Component {
+const TodoListItem = (props) => {
 
-    state = {
-        important:false,
-    };
-    
-    onExclamationClick = () => {
-        this.setState((prevState) => {
-            return {
-                important: !prevState.important,
-            }
-        });
+    const { text, onDelete, done, important, onToggleDone, onToggleImportant } = props;
+
+    let classNames = `TodoListItem`;
+
+    if(done) {
+        classNames += ' done'
     }
 
-    render(){
-
-        const{ important } = this.state;
-        const{ text, onDelete, done, onToggleDone } = this.props;
-
-        let classNames = `TodoListItem`;
-
-        if(done) {
-            classNames += ' done'
-        }
-
-        if(important) {
-            classNames += ' important';
-        }
+    if(important) {
+        classNames += ' important';
+    }
         
     return ( 
             <div className={classNames}>
@@ -45,12 +30,14 @@ export default class TodoListItem extends React.Component {
                     </button>
                     <button
                         className="btn btn-outline-primary"
-                        onClick={this.onExclamationClick}
+                        onClick={onToggleImportant}
                     >
                         <i className="fa fa-exclamation"></i>
                     </button>
                 </div>
             </div>
         );
-    }
+    
 }
+
+export default TodoListItem;
