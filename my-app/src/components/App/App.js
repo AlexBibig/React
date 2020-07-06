@@ -43,11 +43,13 @@ export default class App extends React.Component {
     });
   };
 
-  onSearch = () => {
+  onSearch = (searchText) => {
     this.setState((prevState) => {
-      const searchArr = [...prevState.todoData];
-      console.log(searchArr);
-      const newSearchArr = searchArr[1];
+      const newSearchArr = [
+        ...prevState.todoData.filter((el) =>
+          el.text.toLowerCase().includes(searchText.toLowerCase()),
+        ),
+      ];
 
       return {
         todoData: newSearchArr,

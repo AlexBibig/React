@@ -1,41 +1,31 @@
 import React from 'react';
 import './SearchBlock.css';
 
-// const SearchBlock = () => {
-//     const searchText = 'Search';
-//     return (
-//     <div className="SearchBlock">
-//         <input className="form-control" placeholder = {searchText}
-//     /></div>);
-// }
-
-// export default SearchBlock;
-
 export default class SearchBlock extends React.Component {
   state = {
-    inputText: '',
+    searchText: '',
   };
 
   onSearchTextChange = (event) => {
     console.log(event.target.value);
-
     this.setState({
-      inputText: event.target.value,
+      searchText: event.target.value,
     });
-    this.props.onSearch();
+    console.log(this.state.searchText);
+    this.props.onSearch(this.state.searchText);
   };
 
   render() {
-    const searchText = 'Search';
-    const { inputText } = this.state;
+    const searchPlaceholder = 'Search';
+    const { searchText } = this.state;
 
     return (
       <div className='SearchBlock'>
         <input
           className='form-control'
-          placeholder={searchText}
+          placeholder={searchPlaceholder}
           onChange={this.onSearchTextChange}
-          value={inputText}
+          value={searchText}
         />
       </div>
     );
