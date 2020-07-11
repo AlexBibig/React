@@ -6,26 +6,19 @@ export default class SearchBlock extends React.Component {
     searchText: '',
   };
 
-  onSearchTextChange = (event) => {
-    console.log(event.target.value);
-    this.setState({
-      searchText: event.target.value,
-    });
-    console.log(this.state.searchText);
-    this.props.onSearch(this.state.searchText);
+  onSearchChange = (event) => {
+    this.setState({ searchText: event.target.value });
+    this.props.onSearchChange(event.target.value);
   };
 
   render() {
-    const searchPlaceholder = 'Search';
-    const { searchText } = this.state;
-
     return (
       <div className='SearchBlock'>
         <input
+          onChange={this.onSearchChange}
           className='form-control'
-          placeholder={searchPlaceholder}
-          onChange={this.onSearchTextChange}
-          value={searchText}
+          placeholder='Search'
+          value={this.state.searchText}
         />
       </div>
     );

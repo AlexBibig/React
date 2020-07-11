@@ -43,18 +43,16 @@ export default class App extends React.Component {
     });
   };
 
-  onSearch = (searchText) => {
-    this.setState((prevState) => {
-      const newSearchArr = [
-        ...prevState.todoData.filter((el) =>
-          el.text.toLowerCase().includes(searchText.toLowerCase()),
-        ),
-      ];
+  search = (arr, searchText) => {
+    if (!searchText) {
+      return arr;
+    }
 
-      return {
-        todoData: newSearchArr,
-      };
+    const newArr = arr.filter((item) => {
+      return item.text.toUpperCase().includes(searchText.toUpperCase());
     });
+
+    return newArr;
   };
 
   onAdd = (label) => {
@@ -112,18 +110,23 @@ export default class App extends React.Component {
     });
   };
 
-  render() {
-    const { todoData, filter } = this.state;
+  onSearchChange = (search) => {
+    this.setState({
+      search: search,
+    });
+  };
 
+  render() {
+    const { todoData, filter, search } = this.state;
     const doneSize = this.state.todoData.filter((el) => el.done).length;
     const todoSize = this.state.todoData.length - doneSize;
-    const visibleTodos = this.filter(todoData, filter);
+    const visibleTodos = this.search(this.filter(todoData, filter), search);
 
     return (
       <div className='App'>
         <Header done={doneSize} todo={todoSize} />
         <div className='line'>
-          <SearchBlock onSearch={this.onSearch} />
+          <SearchBlock onSearchChange={this.onSearchChange} />
           <Filter onFilterChange={this.onFilterChange} filter={filter} />
         </div>
         <ItemAddForm onAdd={this.onAdd} />
