@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/TMS-React-toDoList/static/css/main.a9c727ce.chunk.css",
+    "main.js": "/TMS-React-toDoList/static/js/main.ec5af6b5.chunk.js",
+    "main.js.map": "/TMS-React-toDoList/static/js/main.ec5af6b5.chunk.js.map",
+    "runtime-main.js": "/TMS-React-toDoList/static/js/runtime-main.7ababea1.js",
+    "runtime-main.js.map": "/TMS-React-toDoList/static/js/runtime-main.7ababea1.js.map",
+    "static/css/2.af3c1da9.chunk.css": "/TMS-React-toDoList/static/css/2.af3c1da9.chunk.css",
+    "static/js/2.5e489bde.chunk.js": "/TMS-React-toDoList/static/js/2.5e489bde.chunk.js",
+    "static/js/2.5e489bde.chunk.js.map": "/TMS-React-toDoList/static/js/2.5e489bde.chunk.js.map",
+    "index.html": "/TMS-React-toDoList/index.html",
+    "precache-manifest.8e81e8e0f7f26f8bc82c6af8d7a7427c.js": "/TMS-React-toDoList/precache-manifest.8e81e8e0f7f26f8bc82c6af8d7a7427c.js",
+    "service-worker.js": "/TMS-React-toDoList/service-worker.js",
+    "static/css/2.af3c1da9.chunk.css.map": "/TMS-React-toDoList/static/css/2.af3c1da9.chunk.css.map",
+    "static/css/main.a9c727ce.chunk.css.map": "/TMS-React-toDoList/static/css/main.a9c727ce.chunk.css.map",
+    "static/js/2.5e489bde.chunk.js.LICENSE.txt": "/TMS-React-toDoList/static/js/2.5e489bde.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7ababea1.js",
+    "static/css/2.af3c1da9.chunk.css",
+    "static/js/2.5e489bde.chunk.js",
+    "static/css/main.a9c727ce.chunk.css",
+    "static/js/main.ec5af6b5.chunk.js"
+  ]
+}
