@@ -1,13 +1,25 @@
 .ItemAddForm {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 form {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .ItemAddForm form input {
-    width: 70%;
+  width: 70%;
+}
+
+@media (max-width: 500px) {
+  .ItemAddForm form {
+    flex-direction: column;
+  }
+  .ItemAddForm form > input {
+    margin-top: 20px;
+  }
+  .ItemAddForm form > button {
+    margin: 20px 0;
+  }
 }

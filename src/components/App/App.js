@@ -14,6 +14,8 @@ export default class App extends React.Component {
       { text: 'Learn HTML', important: false, done: false, id: 1 },
       { text: 'Learn CSS', important: true, done: false, id: 2 },
       { text: 'Learn JS', important: false, done: false, id: 3 },
+      { text: 'Learn React', important: false, done: false, id: 4 },
+
     ],
     filter: 'all', // all || active || done
   };

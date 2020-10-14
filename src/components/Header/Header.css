@@ -1,12 +1,21 @@
 .Header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 p {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 p span:first-child {
-    margin-right: 10px;
+  margin-right: 10px;
+}
+
+@media (max-width: 500px) {
+  .Header {
+    flex-direction: column;
+  }
+  .Header > {
+    margin-top: 20px;
+  }
 }
